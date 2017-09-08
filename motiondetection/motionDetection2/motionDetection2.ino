@@ -24,7 +24,7 @@ void setup()
   pinMode(echo, INPUT); 
   pinMode(led, OUTPUT); 
   Serial.begin(9600);
-  motor.setSpeed(10);
+  motor.setSpeed(30);
 
 }
 void loop()
