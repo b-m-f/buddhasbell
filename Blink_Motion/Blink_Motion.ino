@@ -15,7 +15,7 @@
 int ledPinGreenOne = 13; // choose the pin for the LED
 int ledPinGreenTwo = 11; // choose the pin for the LED
 int ledPinRed = 12; // choose the pin for the LED
-int inputPin = 2; // choose the input pin (for PIR sensor)
+int echoPin = 2; // choose the input pin (for PIR sensor)
 int ledOff = LOW; // we start, assuming no motion detected
 int ledOn = HIGH; // we start, assuming no motion detected
 int val = 0; // variable for reading the pin status
