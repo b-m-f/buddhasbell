@@ -1,0 +1,18 @@
+#N canvas 210 56 336 289 10;
+#X obj -2846 155 sel 1;
+#X obj -2846 191 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -2794 67 t b f;
+#X obj -2846 123 expr if ($f1 == \$1 && $f2 == \$2 \, 1 \, 0);
+#X obj -2846 39 r m;
+#X obj -2794 40 r s;
+#X obj -2846 237 outlet go;
+#X text -2737 170 argument 1 = minutes \; argument 2 = seconds;
+#X text -2899 -3 @whale-av;
+#X connect 0 0 1 0;
+#X connect 1 0 6 0;
+#X connect 2 0 3 0;
+#X connect 2 1 3 1;
+#X connect 3 0 0 0;
+#X connect 4 0 3 0;
+#X connect 5 0 2 0;
