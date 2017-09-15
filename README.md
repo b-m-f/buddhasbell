@@ -20,3 +20,17 @@
 2. 30 sekunden warten
 3. Motor reverse und zu, motion detection wieder aktiviert
 
+
+# simulation
+- sensor triggered motor
+- delay 30
+- motor geht runter
+- delay 10
+- pd startet -> pd schickt zurueck zum arduino
+- motor geht hoch
+- delay 20s
+- motor geht runter
+- sensor wieder aktiv + LED an, dass ready
+
+
+# zusammenfassung des codes in klartext
