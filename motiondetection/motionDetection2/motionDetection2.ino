@@ -5,22 +5,22 @@ int motorPin1 = 12;
 int motorPin2 = 11;
 int motorPin3 = 10;
 int motorPin4 = 9;
-int trigger=3;
-int echo=2;
+int trigger = 3;
+int echo = 2;
 int led = 13;
-long dauer=0;
-long entfernung=0;
-int motorSpeed = 30;
+long dauer = 0;
+long entfernung = 0;
+int motorSpeed = 10;
 int entfernungZumStartenVomHochziehen = 200;
 int pauseNachHochziehen = 10000;
 int umdrehung = 200;
-int umdrehungenDesMotorsZumHochziehen = 1;
+int umdrehungenDesMotorsZumHochziehen = 10;
 int umdrehungenDesMotorsZumRunterfahren = -umdrehungenDesMotorsZumHochziehen;
 int maximaleEntfernung = 500;
 
 Stepper motor(200, motorPin1, motorPin2, motorPin3, motorPin4);
 
-void setup()
+void setup()\
 {
 
   pinMode(motorPin1, OUTPUT);
