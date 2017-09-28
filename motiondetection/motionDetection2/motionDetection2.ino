@@ -1,12 +1,12 @@
 
 #include <Stepper.h>
 
-int motorPin1 = 12;
-int motorPin2 = 11;
-int motorPin3 = 10;
-int motorPin4 = 9;
-int trigger = 3;
-int echo = 2;
+int motorPin1 = 8;
+int motorPin2 = 13;
+int motorPin3 = 9;
+int motorPin4 = 12;
+int trigger = 5;
+int echo = 4;
 int led = 13;
 long dauer = 0;
 long entfernung = 0;
@@ -18,7 +18,7 @@ int umdrehungenDesMotorsZumHochziehen = 10;
 int umdrehungenDesMotorsZumRunterfahren = -umdrehungenDesMotorsZumHochziehen;
 int maximaleEntfernung = 500;
 
-Stepper motor(200, motorPin1, motorPin2, motorPin3, motorPin4);
+Stepper motor(200, 8, 9, 12, 13);
 
 void setup()\
 {
@@ -36,14 +36,15 @@ void setup()\
 }
 void loop()
 {
-  digitalWrite(led, LOW); 
+  digitalWrite(led, LOW);
   digitalWrite(trigger, LOW);
   delay(5);
   digitalWrite(trigger, HIGH);
   delay(10);
   digitalWrite(trigger, LOW);
   dauer = pulseIn(echo, HIGH);
-  entfernung = (dauer/2) * 0.03432;
+  entfernung = (dauer / 2) * 0.03432;
+  Serial.print(entfernung);
   if (entfernung >= maximaleEntfernung || entfernung <= 0)
   {
     Serial.println("Kein Messwert");
@@ -52,7 +53,9 @@ void loop()
   else
   {
     if (entfernung <= entfernungZumStartenVomHochziehen) {
+      Serial.print("works");
       motor.step(umdrehung * umdrehungenDesMotorsZumHochziehen);
+      Serial.print("breaks");
       delay(pauseNachHochziehen);
       motor.step(umdrehung * umdrehungenDesMotorsZumRunterfahren);
       Serial.write(100); //start ton
@@ -61,7 +64,7 @@ void loop()
       motor.step(umdrehung * umdrehungenDesMotorsZumHochziehen);
       delay(3000);
       motor.step(umdrehung * umdrehungenDesMotorsZumRunterfahren);
-      digitalWrite(led, HIGH); 
+      digitalWrite(led, HIGH);
       delay(10000);
     }
 
