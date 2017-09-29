@@ -16,7 +16,7 @@ int pauseZumMeditieren = 2 * minute;
 int pauseWennFertig = minute;
 
 int umdrehung = 50;
-int umdrehungenDesMotorsZumHochziehen = 27;
+int umdrehungenDesMotorsZumHochziehen = 24;
 int umdrehungenDesMotorsZumRunterfahren = umdrehungenDesMotorsZumHochziehen;
 int maximaleEntfernung = 500;
 int stepsTaken = 0;
@@ -75,6 +75,7 @@ void loop() {
 void pullUp (int duration) {
   for (int i = 0; i < duration; i++) {
     turnMotor(255);
+    Serial.print(stepsTaken);
     stepsTaken++;
   }
 }
