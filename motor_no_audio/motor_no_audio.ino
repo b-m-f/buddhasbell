@@ -42,7 +42,7 @@ void setup() {
 }
 
 void loop() {
-  digitalWrite(led, LOW);
+  digitalWrite(led, HIGH);
   digitalWrite(trigger, LOW);
   delay(5);
   digitalWrite(trigger, HIGH);
@@ -58,6 +58,7 @@ void loop() {
 
   else
   {
+    digitalWrite(led, LOW);
     if (entfernung <= entfernungZumStartenVomHochziehen) {
       pullUp(umdrehung * umdrehungenDesMotorsZumHochziehen);
       delay(pauseNachHochziehen);
