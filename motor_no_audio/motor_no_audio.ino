@@ -5,14 +5,18 @@ int maxAccelleration = 25;
 int trigger = 6;
 int echo = 7;
 
-int led = 13;
+int led = 10;
 long dauer = 0;
 long entfernung = 0;
 int motorSpeed = 10;
 int entfernungZumStartenVomHochziehen = 200;
+int minute = 60000;
 int pauseNachHochziehen = 10000;
+int pauseZumMeditieren = 2 * minute;
+int pauseWennFertig = minute;
+
 int umdrehung = 50;
-int umdrehungenDesMotorsZumHochziehen = 30;
+int umdrehungenDesMotorsZumHochziehen = 27;
 int umdrehungenDesMotorsZumRunterfahren = umdrehungenDesMotorsZumHochziehen;
 int maximaleEntfernung = 500;
 int stepsTaken = 0;
@@ -58,14 +62,11 @@ void loop() {
       pullUp(umdrehung * umdrehungenDesMotorsZumHochziehen);
       delay(pauseNachHochziehen);
       pullDown(umdrehung * umdrehungenDesMotorsZumRunterfahren);
-      Serial.write(100); //start ton
-      delay(10000);
-      Serial.write(0); //stop ton TODO: trigger from PD
+      delay(pauseZumMeditieren);
       pullUp(umdrehung * umdrehungenDesMotorsZumHochziehen);
-      delay(3000);
+      delay(pauseNachHochziehen);
       pullDown(umdrehung * umdrehungenDesMotorsZumRunterfahren);
-      digitalWrite(led, HIGH);
-      delay(10000);
+      delay(pauseWennFertig);
     }
   }
 }
@@ -73,8 +74,6 @@ void loop() {
 void pullUp (int duration) {
   for (int i = 0; i < duration; i++) {
     turnMotor(255);
-    Serial.print(stepsTaken);
-    Serial.print("\n");
     stepsTaken++;
   }
 }
@@ -83,8 +82,6 @@ void pullDown (int duration) {
   for (int i = 0; i < duration; i++) {
     turnMotorReverse(255);
     stepsTaken = 0;
-    Serial.print(stepsTaken);
-    Serial.print("\n");
     stepsTaken++;
   }
 }

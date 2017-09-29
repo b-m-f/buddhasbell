@@ -1,12 +1,14 @@
 #include "FastLED.h"
 
-const int numberOfLeds = 32;
+const int numberOfLeds = 51;
 CRGB leds[numberOfLeds];
 bool goUp = true;
 bool goUp2 = false;
 const int firstStrip = 13;
 //19 long
 const int secondStrip = 32;
+//51
+const int thirdStrip = 51;
 
 const int maxBrightness = 180;
 const int minBrightness = 50;
@@ -35,7 +37,7 @@ void loop() {
       }
     }
   }
-  
+
   for (int i = firstStrip; i < secondStrip; i++) {
     if (goUp2) {
       leds[i] = CHSV(hue, 255, brightness2++);
@@ -48,6 +50,21 @@ void loop() {
       leds[i] = CHSV(hue, 255, brightness2--);
       if (brightness2 == minBrightness) {
         goUp2 = true;
+      }
+    }
+  }
+  for (int i = secondStrip; i < thirdStrip; i++) {
+    if (goUp ) {
+      leds[i] = CHSV(hue, 255, brightness1++);
+      if (brightness1 == maxBrightness) {
+        goUp = false;
+      }
+    }
+    else {
+      goUp = false;
+      leds[i] = CHSV(hue, 255, brightness1--);
+      if (brightness1 == minBrightness) {
+        goUp = true;
       }
     }
     FastLED.show();
